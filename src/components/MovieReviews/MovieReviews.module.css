@@ -1,0 +1,82 @@
+.reviewsContainer {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px; 
+  transition: all 0.3s ease; 
+}
+
+.reviewsContainer:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); 
+}
+
+.reviewsTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center; 
+}
+
+.reviewsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reviewsListItem {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reviewsListItem:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.reviewsAuthor {
+  font-weight: bold;
+  color: #007bff;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.reviewsAuthor:hover {
+  color: #0056b3; 
+}
+
+.reviewsContent {
+  font-style: italic;
+  color: #555;
+  font-size: 16px;
+  margin-top: 10px; 
+}
+
+.noReviews {
+  color: #888;
+  font-style: italic;
+  text-align: center; 
+}
+
+@media (max-width: 600px) {
+  .reviewsTitle {
+    font-size: 20px; 
+  }
+
+  .reviewsListItem {
+    padding: 10px; 
+  }
+
+  .reviewsAuthor {
+    font-size: 16px; 
+  }
+
+  .reviewsContent {
+    font-size: 14px; 
+  }
+}

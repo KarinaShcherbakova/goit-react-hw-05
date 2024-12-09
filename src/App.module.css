@@ -1,0 +1,44 @@
+ main {
+    flex-grow: 1;
+  }
+  
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 2rem;
+    color: #007bff;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .appContainer {
+      padding: 15px;
+    }
+  
+    .loading {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .appContainer {
+      padding: 10px;
+    }
+  
+    .loading {
+      font-size: 1.2rem;
+    }
+  }
