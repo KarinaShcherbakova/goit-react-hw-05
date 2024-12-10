@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage'; 
-import styles from './App.module.css'; 
-
+import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
+import Navigation from './components/Navigation/Navigation'; 
+import styles from './App.module.css';
 
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'));
 const MoviesPage = React.lazy(() => import('./pages/MoviesPage/MoviesPage'));
@@ -14,6 +14,7 @@ function App() {
   return (
     <Router>
       <div>
+        <Navigation />
         <Suspense fallback={<div className={styles.loading}>Loading...</div>}>
           <Routes>
             <Route path="/" element={<HomePage />} />

@@ -1,16 +1,15 @@
-import { useEffect, useState } from 'react';
-import { useParams, NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom'; // Замінили Link на NavLink
+import { useEffect, useState, useRef } from 'react';
+import { useParams, NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import styles from './MovieDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const [cast, setCast] = useState([]);
-  const [reviews, setReviews] = useState([]);
   const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiN2U5NmYyMzA1YmQ3N2I3NDgyMzlmYTViMzhkOTFiNSIsIm5iZiI6MTczMzY1NzAxMi43OCwic3ViIjoiNjc1NTgxYjRlM2I5YjNmOTE0NTUyZDk1Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.PYonm2I1wsJHSWpU_Dh3ihFDIwd5iDypDF9LrDZeu2g';
   const navigate = useNavigate();
   const location = useLocation();
+  const locationStateRef = useRef(location.state?.from || '/movies');
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -19,16 +18,6 @@ const MovieDetailsPage = () => {
           headers: { Authorization: `Bearer ${API_TOKEN}` },
         });
         setMovie(response.data);
-
-        const castResponse = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits`, {
-          headers: { Authorization: `Bearer ${API_TOKEN}` },
-        });
-        setCast(castResponse.data.cast || []);
-
-        const reviewsResponse = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews`, {
-          headers: { Authorization: `Bearer ${API_TOKEN}` },
-        });
-        setReviews(reviewsResponse.data.results || []);
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
@@ -38,11 +27,7 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-    if (location.state?.from) {
-      navigate(location.state.from);
-    } else {
-      navigate('/movies');
-    }
+    navigate(locationStateRef.current);
   };
 
   return (
@@ -75,7 +60,7 @@ const MovieDetailsPage = () => {
             </h2>
           </div>
 
-          <Outlet context={{ cast, reviews }} />
+          <Outlet />
         </>
       )}
     </div>

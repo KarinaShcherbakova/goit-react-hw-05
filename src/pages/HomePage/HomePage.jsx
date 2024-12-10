@@ -2,12 +2,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import MovieList from '../../components/MovieList/MovieList';
 import styles from './HomePage.module.css';
-import { NavLink } from 'react-router-dom';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [category, setCategory] = useState('popular'); 
+  const [category, setCategory] = useState('popular');
 
   const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiN2U5NmYyMzA1YmQ3N2I3NDgyMzlmYTViMzhkOTFiNSIsIm5iZiI6MTczMzY1NzAxMi43OCwic3ViIjoiNjc1NTgxYjRlM2I5YjNmOTE0NTUyZDk1Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.PYonm2I1wsJHSWpU_Dh3ihFDIwd5iDypDF9LrDZeu2g';
 
@@ -28,39 +27,33 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    fetchMovies(category);
+    fetchMovies(category);  
   }, [category]);
 
   return (
     <div className={styles.container}>
       <h1>Welcome to Movie Database</h1>
 
-      <nav>
-        <NavLink 
-          to="/" 
-          className={styles.navLink} 
-          onClick={() => setCategory('popular')} 
-          activeClassName={styles.activeLink}
+      <div className={styles.categoryButtons}>
+        <button 
+          className={category === 'popular' ? styles.activeButton : ''}
+          onClick={() => setCategory('popular')}
         >
-          Home
-        </NavLink>
-        <NavLink 
-          to="/movies" 
-          className={styles.navLink} 
-          onClick={() => setCategory('popular')} 
-          activeClassName={styles.activeLink}
-        >
-          Movies
-        </NavLink>
-        <NavLink 
-          to="/" 
-          className={styles.navLink} 
-          onClick={() => setCategory('trending/day')} 
-          activeClassName={styles.activeLink}
+          Popular Movies
+        </button>
+        <button 
+          className={category === 'trending/day' ? styles.activeButton : ''}
+          onClick={() => setCategory('trending/day')}
         >
           Trending Today
-        </NavLink>
-      </nav>
+        </button>
+        <button 
+          className={category === 'top_rated' ? styles.activeButton : ''}
+          onClick={() => setCategory('top_rated')}
+        >
+          Top Rated Movies
+        </button>
+      </div>
 
       <h2>{category === 'trending/day' ? 'Trending Today' : 'Popular Movies'}</h2>
       {loading ? <p>Loading...</p> : <MovieList movies={movies} />}

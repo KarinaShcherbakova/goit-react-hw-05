@@ -3,12 +3,12 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 20px; 
-  transition: all 0.3s ease; 
+  margin-top: 20px;
+  transition: all 0.3s ease;
 }
 
 .reviewsContainer:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .reviewsTitle {
@@ -16,7 +16,7 @@
   font-weight: bold;
   color: #333;
   margin-bottom: 15px;
-  text-align: center; 
+  text-align: center;
 }
 
 .reviewsList {
@@ -35,8 +35,8 @@
 }
 
 .reviewsListItem:hover {
-  transform: translateY(-5px); 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .reviewsAuthor {
@@ -47,36 +47,59 @@
 }
 
 .reviewsAuthor:hover {
-  color: #0056b3; 
+  color: #0056b3;
 }
 
 .reviewsContent {
   font-style: italic;
   color: #555;
   font-size: 16px;
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 .noReviews {
   color: #888;
   font-style: italic;
-  text-align: center; 
+  text-align: center;
+}
+
+.error {
+  color: #ff0000;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #007bff;
+  font-weight: bold;
+  margin-top: 20px;
 }
 
 @media (max-width: 600px) {
   .reviewsTitle {
-    font-size: 20px; 
+    font-size: 20px;
   }
 
   .reviewsListItem {
-    padding: 10px; 
+    padding: 10px;
   }
 
   .reviewsAuthor {
-    font-size: 16px; 
+    font-size: 16px;
   }
 
   .reviewsContent {
-    font-size: 14px; 
+    font-size: 14px;
+  }
+
+  .error {
+    font-size: 16px;
+  }
+
+  .loading {
+    font-size: 16px;
   }
 }

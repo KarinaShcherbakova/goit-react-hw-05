@@ -2,16 +2,18 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import MovieList from '../../components/MovieList/MovieList';
 import styles from './MoviesPage.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
   const [error, setError] = useState(null);
   const [noResults, setNoResults] = useState(false); 
   const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiN2U5NmYyMzA1YmQ3N2I3NDgyMzlmYTViMzhkOTFiNSIsIm5iZiI6MTczMzY1NzAxMi43OCwic3ViIjoiNjc1NTgxYjRlM2I5YjNmOTE0NTUyZDk1Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.PYonm2I1wsJHSWpU_Dh3ihFDIwd5iDypDF9LrDZeu2g';
   
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  
+  const searchQuery = searchParams.get('query') || ''; 
   
   useEffect(() => {
     if (!searchQuery) return;
@@ -40,7 +42,10 @@ const MoviesPage = () => {
 
   const handleSearch = (event) => {
     event.preventDefault();
-    setSearchQuery(event.target.query.value.trim());
+    const query = event.target.query.value.trim();
+    if (query) {
+      setSearchParams({ query }); 
+    }
   };
 
   const goBack = () => {
@@ -59,6 +64,7 @@ const MoviesPage = () => {
           name="query"
           placeholder="Search for movies..."
           autoComplete="off"
+          defaultValue={searchQuery} 
         />
         <button type="submit">Search</button>
       </form>

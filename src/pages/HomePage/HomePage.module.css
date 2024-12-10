@@ -15,35 +15,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin-bottom: 40px;
-}
-
-.navLink {
-  text-decoration: none;
-  font-size: 1.2rem;
-  color: #007bff;
-  font-weight: bold;
-  transition: color 0.3s ease, transform 0.3s ease;
-  padding: 10px 20px;
-  border-radius: 4px;
-}
-
-.navLink:hover {
-  color: #fff;
-  background-color: #007bff;
-  transform: translateY(-3px);
-}
-
-.activeLink {
-  color: #fff;
-  background-color: #007bff;
-  transform: scale(1.1);
-}
-
 h2 {
   font-size: 2.2rem;
   font-weight: 600;
@@ -54,6 +25,33 @@ h2 {
 .loading {
   font-size: 1.5rem;
   color: #888;
+}
+
+.categoryButtons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.activeButton {
+  background-color: #0056b3;
+  font-weight: bold;
 }
 
 @media (max-width: 768px) {
